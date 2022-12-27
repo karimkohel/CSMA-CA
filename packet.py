@@ -7,6 +7,8 @@ class Packet():
     RTS = 2
     PKT = 3
 
-    def __init__(self, pktType):
+    def __init__(self, pktType, mobileStation):
         self.pktType = pktType
         self.corrupted = False
+        self.mobileStation = mobileStation
+        self.nav = 0

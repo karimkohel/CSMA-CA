@@ -43,3 +43,7 @@ class BaseStation():
 
     def receptionAction(self, packet):
         if (self.state == State.IDLE) and (not packet.corrupted) and (packet.type == Packet.RTS):
+            self.currSender = packet.mobileStation
+            self.state = State.SIFS_before_emitACK
+        elif (self.state == State.rcvPKT) and (not packet.corrupted) and (packet.type == Packet.PKT) and (packet.mobileStation == self.currSender):
+            self.state = State.SIFS_before_emitACK
