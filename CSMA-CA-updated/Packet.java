@@ -31,7 +31,7 @@ public class Packet {
         return Corrupted;
     }
 
-    public MobileStation getMobileStation() {
+    public MobileStation getOwner() {
         return mobileStation;
     }
 
