@@ -4,7 +4,7 @@ from random import randint
 class MobileStation():
 
     def __init__(self, baseStation):
-        self.state = state
+        self.state = State.IDLE
         self.packetsToSend = 0
         self.CWorder = 0
         self.backoffValue = 0
