@@ -7,7 +7,7 @@ class BaseStation():
     # still need to implement wait delay
 
     def __init__(self):
-        self.busy = False
+        self.isBusy = False
         self.state = State.IDLE
         self.currSender = None
 
