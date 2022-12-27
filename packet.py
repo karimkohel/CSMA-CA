@@ -11,4 +11,3 @@ class Packet():
         self.pktType = pktType
         self.corrupted = False
         self.mobileStation = mobileStation
-        self.nav = 0
