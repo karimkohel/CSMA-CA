@@ -8,7 +8,7 @@ class BaseStation():
 
     def __init__(self):
         self.isBusy = False
-        self.state = State.IDLE
+        self.state = State(State.IDLE)
         self.currSender = None
 
 
@@ -45,5 +45,8 @@ class BaseStation():
         if (self.state == State.IDLE) and (not packet.corrupted) and (packet.type == Packet.RTS):
             self.currSender = packet.mobileStation
             self.state = State.SIFS_before_emitACK
-        elif (self.state == State.rcvPKT) and (not packet.corrupted) and (packet.type == Packet.PKT) and (packet.mobileStation == self.currSender):
-            self.state = State.SIFS_before_emitACK
+        elif (self.state == State.rcvPKT) and (not packet.corrupted):
+            if (packet.type == Packet.PKT) and (packet.mobileStation == self.currSender):
+                self.state = State.SIFS_before_emitACK
+            else:
+                self.state.changeTo(State.IDLE)
